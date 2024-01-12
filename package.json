@@ -1,0 +1,36 @@
+{
+  "name": "public-portfolio",
+  "private": true,
+  "version": "0.0.0",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "clean": "rmdir /s /q dist",
+    "lint": "eslint . --ext js,jsx --report-unused-disable-directives --max-warnings 0",
+    "preview": "vite preview",
+    "backup-current-prod-www": "sh protected-shell-scripts/backup-current-prod-www.bat",
+    "literally-delete-prod": "sh protected-shell-scripts/literally-delete-prod.bat",
+    "clear-prod-downloads-folder": "sh protected-shell-scripts/clear-prod-downloads-folder.bat",
+    "restart-prod-webserver": "sh protected-shell-scripts/restart-prod-webserver.bat",
+    "copy-build-to-prod": "sh protected-shell-scripts/copy-build-to-prod.bat",
+    "move-build-to-webserver-on-prod": "sh protected-shell-scripts/move-build-to-webserver-on-prod.bat",
+    "copy-add-files-to-build-folder": "sh protected-shell-scripts/after-build.sh",
+    "letsgooo": "npm run clean & npm run build && npm run copy-add-files-to-build-folder && npm run backup-current-prod-www && npm run clear-prod-downloads-folder && npm run copy-build-to-prod && npm run literally-delete-prod && npm run move-build-to-webserver-on-prod && npm run restart-prod-webserver"
+  },
+  "dependencies": {
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "react-router-dom": "^6.21.1"
+  },
+  "devDependencies": {
+    "@types/react": "^18.2.43",
+    "@types/react-dom": "^18.2.17",
+    "@vitejs/plugin-react": "^4.2.1",
+    "eslint": "^8.55.0",
+    "eslint-plugin-react": "^7.33.2",
+    "eslint-plugin-react-hooks": "^4.6.0",
+    "eslint-plugin-react-refresh": "^0.4.5",
+    "vite": "^5.0.8"
+  }
+}
