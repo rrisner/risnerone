@@ -23,7 +23,6 @@ function Home() {
           Find me on LinkedIn
         </a>
       </div>
-      <p>This is a novel change</p>
       <div className="card">
         <button onClick={() => setCount((count) => count + 1)}>
           count is {count}

@@ -11,6 +11,9 @@ function NavBar() {
         <li className={useLocation().pathname === "/about" ? "active" : ""}>
           <a href="/about">About</a>
         </li>
+        <li className={useLocation().pathname.startsWith("/games") ? "active" : ""}>
+          <a href="/games">Games</a>
+        </li>
       </ul>
     </div>
   );

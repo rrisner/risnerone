@@ -98,3 +98,20 @@
   align-items: center;
   justify-content: center;
 }
+
+.games-menu ul {
+  list-style: none;
+  padding: 0;
+}
+
+.games-menu li {
+  background-color: darkgreen;
+}
+
+.games-menu li:hover {
+  background-color: green;
+}
+
+.games-menu a {
+  color: lightgreen;
+}
