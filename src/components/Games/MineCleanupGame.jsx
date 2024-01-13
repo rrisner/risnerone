@@ -269,9 +269,9 @@ function MineCleanupGame() {
   const initializeGameBoardState = () => {
     const mineProbabilityForDifficulty = 0.08 + userDifficultySetting * 0.002;
     const boardSizeForDifficulty = Math.floor(8 + userDifficultySetting * 0.12);
-    console.log(
+    /*console.log(
       `Probability: ${mineProbabilityForDifficulty}, board size ${boardSizeForDifficulty}`
-    );
+    );*/
     let newGameState = structuredClone(initialGameState);
     newGameState.gameBoard = generateNewGameBoard(
       mineProbabilityForDifficulty,
