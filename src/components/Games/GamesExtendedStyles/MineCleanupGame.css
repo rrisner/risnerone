@@ -1,4 +1,15 @@
 
+.mine-cleanup-game-board {
+    display: flex;
+    justify-content: center;
+}
+
+.mine-cleanup-game-board table {
+    width: 90vw;
+    max-width: 70vh;
+    height: 60vh;
+    max-height: 100vw;
+}
 
 .mine-cleanup-game-board td {
     width: 3vw;
