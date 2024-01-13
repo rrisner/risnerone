@@ -225,6 +225,8 @@ class GameBoardTile {
 
 function MineCleanupGame() {
   const [gameBoardState, setGameBoardState] = useState(0);
+  const [userDifficultySetting, setUserDifficultySetting] = useState(20);
+  const [difficultyWasChanged, setDifficultyWasChanged] = useState(false);
 
   const initialGameState = {
     globalGameState: "playing",
@@ -233,13 +235,13 @@ function MineCleanupGame() {
     setFlagCount: 0,
   };
 
-  const generateNewGameBoard = (probabilityOfBeingAMine) => {
+  const generateNewGameBoard = (probabilityOfBeingAMine, boardSize) => {
     //console.log("Generating a new game board.");
     let newBoard = [];
-    for (let i = 0; i < 10; i++) {
+    for (let i = 0; i < boardSize; i++) {
       let newRow = [];
 
-      for (let j = 0; j < 10; j++) {
+      for (let j = 0; j < boardSize; j++) {
         newRow.push(new GameBoardTile(i, j, probabilityOfBeingAMine));
       }
 
@@ -265,12 +267,21 @@ function MineCleanupGame() {
   };
 
   const initializeGameBoardState = () => {
+    const mineProbabilityForDifficulty = 0.08 + userDifficultySetting * 0.002;
+    const boardSizeForDifficulty = Math.floor(8 + userDifficultySetting * 0.12);
+    console.log(
+      `Probability: ${mineProbabilityForDifficulty}, board size ${boardSizeForDifficulty}`
+    );
     let newGameState = structuredClone(initialGameState);
-    newGameState.gameBoard = generateNewGameBoard(0.09);
+    newGameState.gameBoard = generateNewGameBoard(
+      mineProbabilityForDifficulty,
+      boardSizeForDifficulty
+    );
     newGameState.mineCount = getMineCountFor(newGameState.gameBoard);
     //console.log(newGameState.gameBoard);
 
     setGameBoardState(newGameState);
+    setDifficultyWasChanged(false);
   };
 
   const checkForWinCondition = (gameBoard) => {
@@ -299,7 +310,7 @@ function MineCleanupGame() {
     let gameWinConditionTriggered = false;
     let newSetFlagCount = 0;
 
-    let finalGameBoard = generateNewGameBoard(0);
+    let finalGameBoard = generateNewGameBoard(0, newGameBoard.length);
     for (let i = 0; i < newGameBoard.length; i++) {
       for (let j = 0; j < newGameBoard[0].length; j++) {
         finalGameBoard[i][j].copyStateFrom(newGameBoard[i][j]);
@@ -347,6 +358,30 @@ function MineCleanupGame() {
   return (
     <>
       <h1>Mine Cleanup</h1>
+      <label>
+        Difficulty: {userDifficultySetting}
+        <input
+          id="user-difficulty-slider"
+          type="range"
+          min={1}
+          max={100}
+          step={1}
+          value={userDifficultySetting}
+          onChange={(e) =>
+            setUserDifficultySetting(e.target.value) ||
+            setDifficultyWasChanged(true)
+          }
+        />
+      </label>
+      {difficultyWasChanged && (
+        <>
+          <br></br>
+          <button onClick={() => resetGame()}>
+            Reset game with new difficulty
+          </button>
+        </>
+      )}
+
       <h3>
         There are {gameBoardState.mineCount} mines in this game.{" "}
         {gameBoardState.setFlagCount}{" "}
