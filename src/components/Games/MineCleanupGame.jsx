@@ -260,7 +260,7 @@ function MineCleanupGame() {
 
   const initializeGameBoardState = () => {
     let newGameState = structuredClone(initialGameState);
-    newGameState.gameBoard = generateNewGameBoard(0.22);
+    newGameState.gameBoard = generateNewGameBoard(0.09);
     newGameState.mineCount = getMineCountFor(newGameState.gameBoard);
     //console.log(newGameState.gameBoard);
 
@@ -374,6 +374,7 @@ function MineCleanupGame() {
       {gameBoardState.globalGameState != "playing" && (
         <button onClick={() => resetGame()}>Play Again</button>
       )}
+      <p>Page added January 12, 2024</p>
     </>
   );
 }

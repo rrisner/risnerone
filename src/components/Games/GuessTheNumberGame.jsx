@@ -81,6 +81,7 @@ function GuessTheNumberGame() {
             <h2>No value was entered.</h2>
           </div>
         ))}
+      <p>Page added January 11, 2024</p>
     </>
   );
 }
