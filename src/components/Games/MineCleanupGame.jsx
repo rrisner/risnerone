@@ -37,7 +37,11 @@ class GameBoardTile {
       } else {
         return this.AdjacentMineCount;
       }
-    } else if (globalGameState == "game-win" && this.IsAMine) {
+    } else if (
+      globalGameState == "game-win" &&
+      this.IsAMine &&
+      !this.FlagIsSet
+    ) {
       return "%";
     } else {
       return "";
@@ -72,7 +76,9 @@ class GameBoardTile {
       >
         {!this.IsRevealed && (
           <div
-            className={`optional-${this.FlagIsSet ? "remove" : "place"}-flag`}
+            className={`optional-${this.FlagIsSet ? "remove" : "place"}-flag ${
+              globalGameState != "playing" && !this.FlagIsSet ? "hidden" : ""
+            }`}
             onClick={(e) =>
               globalGameState === "playing" &&
               this.setFlag(e, getMainGameBoardState, updateMainGameBoardState)

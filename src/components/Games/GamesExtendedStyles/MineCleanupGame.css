@@ -1,4 +1,8 @@
 
+.hidden {
+    display: none;
+}
+
 .mine-cleanup-game-board {
     display: flex;
     justify-content: center;
