@@ -10,6 +10,9 @@ function GamesHome() {
           <li>
             <a href="/games/guess-the-number">Guess the Number</a>
           </li>
+          <li>
+            <a href="/games/mine-cleanup">Mine Cleanup</a>
+          </li>
         </ul>
       </div>
     </>

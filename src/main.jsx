@@ -8,6 +8,7 @@ import NavBar from "./components/Global/NavBar.jsx";
 import GuessTheNumberGame from "./components/Games/GuessTheNumberGame.jsx";
 import GamesHome from "./components/Games/GamesHome.jsx";
 import BackToGamesLink from "./components/Games/BackToGamesLink.jsx";
+import MineCleanupGame from "./components/Games/MineCleanupGame.jsx";
 
 const withHeaderAndFooter = (component) => {
   return (
@@ -21,6 +22,7 @@ const withBackToGamesLink = (component) => {
   return (
     <>
       {component}
+      <br></br>
       <BackToGamesLink />
     </>
   );
@@ -42,6 +44,10 @@ const router = createBrowserRouter([
   {
     path: "/games/guess-the-number",
     element: withHeaderAndFooter(withBackToGamesLink(<GuessTheNumberGame />)),
+  },
+  {
+    path: "/games/mine-cleanup",
+    element: withHeaderAndFooter(withBackToGamesLink(<MineCleanupGame />)),
   },
 ]);
 

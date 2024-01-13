@@ -1,0 +1,48 @@
+
+
+.mine-cleanup-game-board td {
+    width: 3vw;
+    height: 5vh;
+}
+
+.mine-cleanup-tile-false {
+    background-color: slategray;
+}
+
+
+.mine-cleanup-tile-true-mine {
+    background-color: darkred;
+}
+
+.mine-cleanup-tile-true-nomine {
+    background-color: lightblue;
+}
+
+.mine-cleanup-tile-false:hover {
+    background-color: lightsteelblue;
+}
+
+.click:hover {
+    cursor: pointer;
+}
+
+.noclick:hover {
+    cursor: default;
+}
+
+.optional-place-flag {
+    width: 50%;
+    height: 50%;
+    background-color: yellow;
+    top: -25%;
+    position: relative;
+    
+}
+
+.announcement-game-over {
+    color: darkred;
+}
+
+.announcement-game-win {
+    color:green
+}
