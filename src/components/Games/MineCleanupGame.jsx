@@ -30,7 +30,7 @@ class GameBoardTile {
 
   getDisplayVisualization(globalGameState) {
     if (this.IsAMine && this.IsRevealed) {
-      return "Kaboom!";
+      return "💥";
     } else if (!this.IsAMine && this.IsRevealed) {
       if (this.AdjacentMineCount == 0) {
         return "";
